@@ -1,0 +1,246 @@
+/* Estilo global para html y body */
+html, body {
+  height: 100%; /* Asegura que el contenedor principal ocupe toda la altura de la ventana */
+  margin: 0; /* Elimina el margen predeterminado */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente principal */
+  background-color: #f0f0f0; /* Color de fondo suave para toda la página */
+}
+
+/* Estilo para el cuerpo de la página */
+body {
+  display: flex; /* Usa flexbox para el diseño */
+  flex-direction: column; /* Organiza el contenido verticalmente */
+  min-height: 100vh; /* Asegura que el cuerpo ocupe al menos toda la altura de la ventana */
+  background-color: #534f4f; /* Color de fondo más oscuro */
+}
+
+/* Estilo para el encabezado */
+header {
+  background: #000; /* Color de fondo negro */
+  color: #fff; /* Color de texto blanco */
+  padding: 1rem 2rem; /* Espaciado interno */
+  text-align: center; /* Alineación de texto al centro */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilo para el título del encabezado */
+header h1 {
+  margin: 0; /* Elimina márgenes */
+  font-size: 2.5rem; /* Tamaño de fuente más grande */
+  color: #ff0015; /* Color del nombre de Inventec en rojo */
+}
+
+/* Estilo para el contenedor principal */
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el título principal */
+h1 {
+  text-align: center;
+  color: #ff0015;
+}
+
+/* Estilo para la barra de navegación */
+nav {
+  background: #222; /* Color de fondo gris oscuro */
+  padding: 0.5rem 2rem; /* Espaciado interno */
+  position: sticky; /* Hace que el nav permanezca fijo al hacer scroll */
+  top: 0; /* Posiciona el nav en la parte superior */
+  z-index: 1000; /* Asegura que el nav esté sobre otros elementos */
+  background: rgba(34, 34, 34, 0.8); /* Fondo con opacidad */
+  transition: background 0.3s ease; /* Transición suave para el cambio de fondo */
+}
+
+/* Cambio de color de fondo al hacer scroll */
+nav.scrolled {
+  background: #000; /* Fondo negro al hacer scroll */
+}
+
+/* Estilo para la lista de navegación */
+nav ul {
+  list-style: none; /* Elimina los puntos de lista */
+  margin: 0; /* Elimina márgenes */
+  padding: 0; /* Elimina padding */
+  display: flex; /* Usa flexbox para alinear horizontalmente */
+  justify-content: center; /* Centra los elementos de la lista */
+}
+
+/* Estilo para los elementos de la lista de navegación */
+nav ul li {
+  margin: 0 15px; /* Espaciado entre los elementos */
+}
+
+/* Estilo para los enlaces de navegación */
+nav ul li a {
+  color: #fff; /* Color del texto blanco */
+  text-decoration: none; /* Elimina el subrayado */
+  font-size: 1.1rem; /* Tamaño de fuente */
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Transición suave para el color y el subrayado */
+}
+
+/* Efecto hover para los enlaces de navegación */
+nav ul li a:hover {
+  color: #ff0026; /* Color rojo al pasar el cursor */
+  text-decoration: underline; /* Subrayado al pasar el cursor */
+}
+
+/* Estilo para el formulario */
+form {
+  margin-bottom: 20px;
+}
+
+/* Estilos para las etiquetas de formulario */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Estilos para los campos de entrada de texto */
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Estilo para los botones */
+button {
+  background: #ff0026; /* Color de fondo rojo */
+  color: #fff; /* Color de texto blanco */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 1rem; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+/* Efecto hover para los botones */
+button:hover {
+  background: #e60000; /* Color de fondo más oscuro al pasar el cursor */
+}
+
+/* Estilos para las tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Estilos para las celdas de las tablas */
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Estilos para la cabecera de la tabla */
+thead {
+  background-color: #f2f2f2;
+}
+
+/* Estilos para las filas de la tabla en el cuerpo */
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+/* Estilo para el pie de página */
+footer {
+  background: #000; /* Color de fondo negro */
+  color: #fff; /* Color de texto blanco */
+  text-align: center; /* Alineación de texto al centro */
+  padding: 1rem 2rem; /* Espaciado interno */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilo para el texto en el pie de página */
+footer p {
+  margin: 0; /* Elimina márgenes */
+  font-size: 0.9rem; /* Tamaño de fuente más pequeño */
+}
+
+/* Estilo para los enlaces en el pie de página */
+footer a {
+  color: #ff0026; /* Color rojo para los enlaces */
+  text-decoration: none; /* Elimina el subrayado */
+  font-weight: bold; /* Fuente en negrita */
+  transition: text-decoration 0.3s ease; /* Transición suave para el subrayado */
+}
+
+/* Efecto hover para los enlaces en el pie de página */
+footer a:hover {
+  text-decoration: underline; /* Subrayado al pasar el cursor */
+}
+
+/* Estilo para las imágenes dentro de las secciones */
+section img {
+  display: block; /* Alinea las imágenes en bloque */
+  margin: 0 0 10px 20px; /* Espaciado entre la imagen y el texto */
+  max-width: 100%; /* Asegura que la imagen no exceda el tamaño del contenedor */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.433); /* Sombra sutil */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para transformación y sombra */
+}
+
+/* Efecto hover para las imágenes */
+section img:hover {
+  transform: scale(1.2); /* Aumenta el tamaño de la imagen al pasar el cursor */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+/* Estilo para el botón flotante */
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0; /* Inicialmente invisible */
+  transition: opacity 1s; /* Transición de opacidad de 1 segundo */
+  background-color: #f44336; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: none; /* Sin bordes */
+  border-radius: 50%; /* Forma circular */
+  width: 50px; /* Ancho */
+  height: 50px; /* Altura */
+  font-size: 24px; /* Tamaño del texto */
+  cursor: pointer; /* Cursor en forma de mano */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra */
+}
+
+#scrollToTopBtn.show {
+  opacity: 1; /* Hacer visible */
+}
+
+#scrollToTopBtn:hover {
+  background-color: #c62828; /* Color de fondo al pasar el mouse */
+}
+
+/* Estilo específico para la superposición */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Fondo negro con opacidad */
+  display: flex; /* Usar flexbox */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  color: #fff; /* Color del texto blanco */
+  font-size: 2rem; /* Tamaño de fuente grande */
+  font-weight: bold; /* Fuente en negrita */
+  opacity: 0; /* Inicialmente invisible */
+  transition: opacity 0.5s ease; /* Transición de opacidad */
+}
+
+.overlay.show {
+  opacity: 1; /* Hacer visible */
+}

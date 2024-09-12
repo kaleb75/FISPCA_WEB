@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCBA traceability</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PCBA traceability</h1>
+        <form id="consultaForm">
+            <label for="serialNumber">Numero de serie interno:</label>
+            <input type="text" id="serialNumber" name="serialNumber" required>
+            <button type="submit">Consultar</button>
+        </form>
+        <div id="resultContainer">
+            <h2>Logs</h2>
+            <table id="resultTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Internal_SN</th>
+                        <th>Customer_SN</th>
+                        <th>Rev</th>
+                        <th>WorkOrder</th>
+                        <th>Model</th>
+                        <th>Line</th>
+                        <th>WC</th>
+                        <th>Current_Station</th>
+                        <th>NWC</th>
+                        <th>Next_Station</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas se llenarán aquí -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <p>®️ Rights reserved for Kaleb Chavira ®️</p>
+        <p>
+            <span id="email" style="cursor:pointer; text-decoration:underline;" onclick="copyEmail()">Mail Support 📨</span> 
+            | 
+            <span id="phone" style="cursor:pointer; text-decoration:underline;" onclick="openWhatsApp()">WhatsApp Support📱</span>
+        </p>
+        <img src="https://unicorn-nest.com/wp-content/uploads/2021/11/Inventec-Corp..jpg" alt="" style="width: 200px;">
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        function copyEmail() {
+            navigator.clipboard.writeText("support@example.com").then(() => {
+                alert("Email copiado al portapapeles");
+            });
+        }
+
+        function openWhatsApp() {
+            window.open("https://wa.me/1234567890", "_blank");
+        }
+    </script>
+</body>
+</html>
