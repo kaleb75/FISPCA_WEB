@@ -1,5 +1,5 @@
 # FISPCA_WEB
-# PCBA Traceability System
+## PCBA Traceability System
 
 A web application designed to track and manage PCBA (Printed Circuit Board Assembly) production data in real-time. It enables users to query internal and customer serial numbers, track the production status across multiple stations, and retrieve logs from various manufacturing tables. This system is crucial for ensuring traceability and quality control within the SMT (Surface Mount Technology) production process.
 
