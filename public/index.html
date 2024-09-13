@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PCBA traceability</title>
+    <title>Board Status</title>
+    <link rel="icon" href="https://ai.inventec.com/wp-content/uploads/2022/06/favicon-1.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>PCBA traceability</h1>
+        <h1>Board Status</h1>
         <form id="consultaForm">
-            <label for="serialNumber">Numero de serie interno:</label>
+            <label for="serialNumber">Internal Serial Number:</label>
             <input type="text" id="serialNumber" name="serialNumber" required>
-            <button type="submit">Consultar</button>
+            <button type="submit">Check!</button>
         </form>
         <div id="resultContainer">
-            <h2>Logs</h2>
+            <h2>Status</h2>
             <table id="resultTable">
                 <thead>
                     <tr>
@@ -30,6 +31,24 @@
                         <th>Current_Station</th>
                         <th>NWC</th>
                         <th>Next_Station</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas se llenarán aquí -->
+                </tbody>
+            </table>
+            <h2>History</h2>
+            <table id="additionalResultTable">
+                <thead>
+                    <tr>
+                        <th>InputType</th>
+                        <th>IsPass</th>
+                        <th>Editor</th>
+                        <th>SN</th>
+                        <th>Line</th>
+                        <th>Creation_Date</th>
+                        <th>WC</th>
+                        <th>STATION</th>
                     </tr>
                 </thead>
                 <tbody>
