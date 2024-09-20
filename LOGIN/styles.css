@@ -53,7 +53,7 @@ input[type="text"], input[type="password"] {
     font-size: 16px; /* Establece el tamaño del texto dentro de los campos de entrada en 16px */
     background-color: rgba(255, 255, 255, 0); /* Define un fondo completamente transparente */
     align-items: center; /* Alinea el contenido (texto) dentro del input en el centro verticalmente */
-    color: #fff; /* El texto dentro de los campos de entrada será blanco */
+    color: #aa5555; /* El texto dentro de los campos de entrada será blanco */
 }
   
 /* Placeholder más visible sobre el fondo transparente */
