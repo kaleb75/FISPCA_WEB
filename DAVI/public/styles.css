@@ -12,8 +12,6 @@ body {
   flex-direction: column; /* Ordena los elementos en una dirección vertical */
   min-height: 100vh; /* Garantiza que el cuerpo ocupe al menos el tamaño completo de la ventana */
   background-color: #534f4f; /* Aplica un color de fondo más oscuro */
-  margin: 0;
-  padding: 0;
 }
 
 /* Estilo para el encabezado */
@@ -28,37 +26,34 @@ header {
 /* Estilo para el título del encabezado */
 header h1 {
   margin: 0; /* Elimina cualquier margen alrededor del título */
-
   font-size: 2.5rem; /* Aumenta el tamaño del texto */
   color: #ff0015; /* Cambia el color del texto a rojo */
 }
 
 /* Estilo para el contenedor principal */
 .container {
-  width: 80%; /* El contenedor ocupará el 80% del ancho de la pantalla */
-  margin: auto; /* Centra el contenedor horizontalmente */
-  padding: 20px; /* Añade espaciado interno */
-  background-color: #fff; /* Fondo blanco para el contenedor */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra sutil alrededor del contenedor */
-  flex-grow: 1; /* Permite que el contenedor crezca con el contenido */
-
+  width: 95%; /* O 100% en dispositivos móviles */
+  max-width: 1200px; /* Mantén un ancho máximo para pantallas más grandes */
+  margin: 0 auto; /* Centrado horizontal */
+  padding: 10px; /* Reduce el padding en pantallas pequeñas */
 }
+
 
 /* Estilo para el título principal */
 h1 {
   text-align: center; /* Centra el título horizontalmente */
-  color: #ff0015; /* Color rojo para el texto */
+  background-color: #000;
+  color: #ff004c; /* Color rojo para el texto */
   font-weight: bolder;
 }
 
 /* Estilo para la barra de navegación */
 nav {
-  background: #222; /* Fondo gris oscuro para la barra de navegación */
+  background: rgba(34, 34, 34, 0.8); /* Fondo oscuro con opacidad */
   padding: 0.5rem 2rem; /* Espaciado interno en la barra de navegación */
   position: sticky; /* Hace que la barra de navegación se quede fija al hacer scroll */
   top: 0; /* La barra se queda en la parte superior de la página */
   z-index: 1000; /* Se asegura de que la barra esté por encima de otros elementos */
-  background: rgba(34, 34, 34, 0.8); /* Fondo oscuro con opacidad */
   transition: background 0.3s ease; /* Transición suave para cambios de fondo */
 }
 
@@ -91,13 +86,13 @@ nav ul li a {
 
 /* Efecto hover para los enlaces de navegación */
 nav ul li a:hover {
-  color: #ff0026; /* Cambia el color a rojo al pasar el cursor sobre el enlace */
+  color: #ff004c; /* Cambia el color a rojo al pasar el cursor sobre el enlace */
   text-decoration: underline; /* Añade subrayado al pasar el cursor */
 }
 
 /* Estilo para el formulario */
 form {
-  margin-bottom: 20px; /* Añade espacio debajo del formulario */
+  margin-bottom: 10px; /* Menos espacio debajo del formulario */
 }
 
 /* Estilos para las etiquetas de formulario */
@@ -117,7 +112,7 @@ input[type="text"] {
 
 /* Estilo para los botones */
 button {
-  background: #ff0026; /* Color de fondo rojo */
+  background: #ff004c; /* Color de fondo rojo */
   color: #fff; /* Color del texto blanco */
   border: none; /* Elimina los bordes */
   border-radius: 4px; /* Bordes redondeados */
@@ -134,17 +129,20 @@ button:hover {
 
 /* Estilos para las tablas */
 table {
-  width: 100%; /* La tabla ocupa el 100% del contenedor */
-  border-collapse: collapse; /* Colapsa los bordes de las celdas en un solo borde */
+  width: 100%; /* Asegúrate de que la tabla ocupe el 100% del contenedor */
+  max-width: 100%; /* Asegura que no exceda el ancho del contenedor */
+  overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */
 }
+
 
 /* Estilos para las celdas de las tablas */
 th, td {
-  border: 1px solid #ddd; /* Bordes grises claros para las celdas */
-  padding: 8px; /* Espaciado interno en las celdas */
-  text-align: center; /* Texto centrado dentro de las celdas */
-  height: -10px; /* Define el alto de las celdas */
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center;
+  margin: 0; /* Asegúrate de que no haya margen */
 }
+
 
 /* Estilos para la cabecera de la tabla */
 thead {
@@ -159,7 +157,6 @@ tbody tr:nth-child(even) {
 /* Estilos para las filas impares del cuerpo de la tabla */
 tbody tr:nth-child(odd) {
   background-color: #be8e8e; /* Fondo blanco para las filas impares */
-  
 }
 
 /* Estilo para el pie de página */
@@ -174,12 +171,11 @@ footer {
 /* Estilo para el texto en el pie de página */
 footer p {
   margin: 0; /* Elimina márgenes alrededor del texto */
-  /*font-size: 0.9rem; /* Reduce el tamaño del texto */
 }
 
 /* Estilo para los enlaces en el pie de página */
 footer a {
-  color: #ff0026; /* Color rojo para los enlaces */
+  color: #ff004c; /* Color rojo para los enlaces */
   text-decoration: none; /* Elimina el subrayado */
   font-weight: bold; /* Texto en negrita */
   transition: text-decoration 0.3s ease; /* Transición suave para el subrayado */
@@ -193,8 +189,28 @@ footer a:hover {
 /* Estilo para las imágenes dentro de las secciones */
 section img {
   display: block; /* Hace que las imágenes se alineen en bloque */
- margin: 0 0 0px 0px; /* Espaciado entre la imagen y el texto */
- max-width: 100%; /* La imagen no excede el tamaño del contenedor */
+  margin: 0 0 10px 0; /* Espaciado entre la imagen y el texto */
+  max-width: 100%; /* La imagen no excede el tamaño del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
   border-radius: 8px; /* Bordes redondeados */
- box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor de la imagen */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor de la imagen */
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%; /* Mayor ancho en pantallas pequeñas */
+    padding: 10px; /* Menos espaciado */
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Tamaño de fuente más pequeño */
+  }
+
+  table {
+    font-size: 0.9rem; /* Reduce el tamaño de fuente de la tabla */
+  }
+}
+
+#resultContainer {
+  overflow-x: auto; /* Permite desplazamiento horizontal */
 }
