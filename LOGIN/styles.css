@@ -2,7 +2,7 @@
 body {
     margin: 0; /* Elimina cualquier margen predeterminado del body */
     padding: 0; /* Elimina el relleno predeterminado del body */
-    background: linear-gradient(165deg, #121212, #000000, #ff0000); /* Crea un fondo con un degradado de negro (#121212) a gris (#333333) y un toque de rojo (#ff004c) */
+    background: linear-gradient(165deg, #121212, #000000, #ff0000d8); /* Crea un fondo con un degradado de negro (#121212) a gris (#333333) y un toque de rojo (#ff004c) */
     height: 100vh; /* Asegura que el body tenga una altura completa de la ventana */
     display: flex; /* Usa flexbox para alinear los elementos hijos (contenedor de login) */
     justify-content: center; /* Centra el contenido horizontalmente */
@@ -39,7 +39,7 @@ body {
   
 /* Título del login con más espaciado y el color Inventec */
 h2 {
-    color: #ff0000; /* Define el color del texto del título usando el color rojo de Inventec */
+    color: #ff0000c7; /* Define el color del texto del título usando el color rojo de Inventec */
     margin-bottom: 30px; /* Añade un margen inferior de 30px para separar el título de los elementos de entrada */
 }
   
@@ -65,7 +65,7 @@ input::placeholder {
 button {
     width: 100%; /* El botón ocupa todo el ancho disponible de la caja */
     padding: 12px; /* Añade un relleno interno de 12px */
-    background-color: #ff0000; /* Define el color de fondo del botón con el rojo de Inventec */
+    background-color: #7a020271; /* Define el color de fondo del botón con el rojo de Inventec */
     color: #fff; /* El texto del botón será blanco */
     border: none; /* Elimina cualquier borde del botón */
     border-radius: 5px; /* Redondea los bordes del botón con un radio de 5px */
