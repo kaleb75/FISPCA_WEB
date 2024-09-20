@@ -1,0 +1,95 @@
+/* Fondo con degradado negro-gris con un toque de rojo */
+body {
+    margin: 0; /* Elimina cualquier margen predeterminado del body */
+    padding: 0; /* Elimina el relleno predeterminado del body */
+    background: linear-gradient(165deg, #121212, #000000, #ff0000); /* Crea un fondo con un degradado de negro (#121212) a gris (#333333) y un toque de rojo (#ff004c) */
+    height: 100vh; /* Asegura que el body tenga una altura completa de la ventana */
+    display: flex; /* Usa flexbox para alinear los elementos hijos (contenedor de login) */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    font-family: 'Arial', sans-serif; /* Establece la tipografía del contenido */
+}
+  
+/* Contenedor para centrar la caja de login */
+.login-container {
+    display: flex; /* Flexbox para organizar los elementos internos */
+    flex-direction: column; /* Ordena los elementos hijos (imagen y caja) en una columna vertical */
+    justify-content: center; /* Centra los elementos hijos (imagen y caja) verticalmente dentro del contenedor */
+    align-items: center; /* Alinea los elementos hijos horizontalmente en el centro */
+    width: 100%; /* El contenedor ocupa el 100% del ancho disponible */
+    height: 100%; /* El contenedor ocupa el 100% de la altura disponible */
+}
+  
+/* Estilo para la imagen del logo */
+.logo {
+    width: 300px; /* Define el ancho de la imagen a 150px */
+    margin-bottom: 20px; /* Añade un margen inferior de 20px para separar la imagen de la caja de login */
+}
+  
+/* Caja de login centrada, con un poco más de espacio y sombras */
+.login-box {
+    background-color: #4e1d1d; /* Define el color de fondo de la caja de login */
+    padding: 40px 40px; /* Añade un relleno interno de 40px en la parte superior e inferior y 30px en los laterales */
+    border-radius: 50px; /* Redondea los bordes de la caja con un radio de 8px */
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.678); /* Aplica una sombra a la caja con un desplazamiento de 6px vertical y un difuminado de 20px */
+    text-align: center; /* Centra el texto dentro de la caja */
+    max-width: 350px; /* Define un ancho máximo de 350px para la caja */
+    width: 100%; /* La caja ocupará todo el ancho disponible hasta el máximo */
+}
+  
+/* Título del login con más espaciado y el color Inventec */
+h2 {
+    color: #ff0000; /* Define el color del texto del título usando el color rojo de Inventec */
+    margin-bottom: 30px; /* Añade un margen inferior de 30px para separar el título de los elementos de entrada */
+}
+  
+/* Campos de input transparentes, con borde y texto de color */
+input[type="text"], input[type="password"] {
+    width: 100%; /* Los campos de entrada ocupan todo el ancho disponible de la caja */
+    padding: 12px; /* Añade un relleno interno de 12px dentro de los campos de entrada */
+    margin: 12px 0; /* Añade un margen de 12px arriba y abajo para separarlos entre sí */
+    border: 2px solid #ff004c00; /* Aplica un borde de 2px con el color rojo de Inventec, pero invisible (transparente) */
+    border-radius: 15px; /* Redondea los bordes de los campos de entrada con un radio de 15px */
+    font-size: 16px; /* Establece el tamaño del texto dentro de los campos de entrada en 16px */
+    background-color: rgba(255, 255, 255, 0); /* Define un fondo completamente transparente */
+    align-items: center; /* Alinea el contenido (texto) dentro del input en el centro verticalmente */
+    color: #fff; /* El texto dentro de los campos de entrada será blanco */
+}
+  
+/* Placeholder más visible sobre el fondo transparente */
+input::placeholder {
+    color: rgba(197, 154, 154, 0.7); /* Establece el color del placeholder en blanco con una opacidad del 70% */
+}
+  
+/* Botón estilizado con más espaciado y efecto hover */
+button {
+    width: 100%; /* El botón ocupa todo el ancho disponible de la caja */
+    padding: 12px; /* Añade un relleno interno de 12px */
+    background-color: #ff0000; /* Define el color de fondo del botón con el rojo de Inventec */
+    color: #fff; /* El texto del botón será blanco */
+    border: none; /* Elimina cualquier borde del botón */
+    border-radius: 5px; /* Redondea los bordes del botón con un radio de 5px */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón */
+    font-size: 18px; /* Establece el tamaño del texto dentro del botón en 18px */
+    transition: background-color 0.3s ease; /* Aplica una transición suave de 0.3 segundos para el cambio de color de fondo cuando se haga hover */
+}
+  
+button:hover {
+    background-color: #ff0000; /* Cambia el color de fondo del botón a un tono más oscuro cuando se pasa el cursor sobre él */
+}
+  
+/* Mensaje de error */
+.error-message {
+    color: #ff0000; /* Define el color del mensaje de error con el rojo de Inventec */
+    margin-top: 15px; /* Añade un margen superior de 15px para separar el mensaje de error del resto del contenido */
+    font-size: 14px; /* Establece el tamaño del texto del mensaje de error en 14px */
+    display: none; /* Por defecto, el mensaje de error está oculto */
+}
+  
+/* Mejorando el estilo en pantallas pequeñas */
+@media (max-width: 768px) {
+    .login-box {
+        max-width: 90%; /* La caja de login ocupará el 90% del ancho disponible en pantallas pequeñas */
+        padding: 30px 20px; /* Reduce el relleno interno a 30px en la parte superior e inferior y 20px en los laterales en pantallas pequeñas */
+    }
+}
