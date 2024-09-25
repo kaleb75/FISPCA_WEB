@@ -1,63 +1,99 @@
-const pool = require('./db');
+const { getConnection } = require('./db');
 
-const getTasks = (request, response) => {
-    pool.query('SELECT * FROM tasks ORDER BY id ASC', (error, results) => {
-        if (error) {
-            throw error;
-        }
-        response.status(200).json(results.rows);
-    });
+// Obtener todos los tasks
+const getTasks = async (request, response) => {
+    try {
+        const pool = await getConnection();
+        const result = await pool.request().query('SELECT * FROM tasks ORDER BY id ASC');
+        response.status(200).json(result.recordset);
+    } catch (error) {
+        console.error('Error al obtener tasks:', error);
+        response.status(500).send('Error al obtener tasks');
+    }
 };
 
-const getTaskById = (request, response) => {
+// Obtener un task por ID
+const getTaskById = async (request, response) => {
     const id = parseInt(request.params.id);
-
-    pool.query('SELECT * FROM tasks WHERE id = $1', [id], (error, results) => {
-        if (error) {
-            throw error;
-        }
-        response.status(200).json(results.rows[0]);
-    });
+    try {
+        const pool = await getConnection();
+        const result = await pool.request()
+            .input('id', sql.Int, id)
+            .query('SELECT * FROM tasks WHERE id = @id');
+        response.status(200).json(result.recordset[0]);
+    } catch (error) {
+        console.error('Error al obtener task:', error);
+        response.status(500).send('Error al obtener task');
+    }
 };
 
-const createTask = (request, response) => {
-    const { Title, Desc_s, Desc_l, Priority, Owner, Dept, Customer, Requester, Area, URL, Attachment, Status } = request.body;
-
-    pool.query('INSERT INTO tasks (Title, Desc_s, Desc_l, Priority, Owner, Dept, Customer, Requester, Area, URL, Attachment, Status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *', 
-    [Title, Desc_s, Desc_l, Priority, Owner, Dept, Customer, Requester, Area, URL, Attachment, Status], 
-    (error, results) => {
-        if (error) {
-            throw error;
-        }
-        response.status(201).json(results.rows[0]);
-    });
+// Crear un nuevo task
+const createTask = async (request, response) => {
+    const { title, desc_s, desc_l, priority, owner, dept, customer, requester, area, url, attachment, status } = request.body;
+    try {
+        const pool = await getConnection();
+        const result = await pool.request()
+            .input('title', sql.VarChar, title)
+            .input('desc_s', sql.Text, desc_s)
+            .input('desc_l', sql.Text, desc_l)
+            .input('priority', sql.Int, priority)
+            .input('owner', sql.VarChar, owner)
+            .input('dept', sql.VarChar, dept)
+            .input('customer', sql.VarChar, customer)
+            .input('requester', sql.VarChar, requester)
+            .input('area', sql.VarChar, area)
+            .input('url', sql.Text, url)
+            .input('attachment', sql.Text, attachment)
+            .input('status', sql.VarChar, status)
+            .query('INSERT INTO tasks (title, desc_s, desc_l, priority, owner, dept, customer, requester, area, url, attachment, status) VALUES (@title, @desc_s, @desc_l, @priority, @owner, @dept, @customer, @requester, @area, @url, @attachment, @status); SELECT SCOPE_IDENTITY() AS id');
+        response.status(201).json({ id: result.recordset[0].id });
+    } catch (error) {
+        console.error('Error al crear task:', error);
+        response.status(500).send('Error al crear task');
+    }
 };
 
-const updateTask = (request, response) => {
+// Actualizar un task existente
+const updateTask = async (request, response) => {
     const id = parseInt(request.params.id);
-    const { Title, Desc_s, Desc_l, Priority, Owner, Dept, Customer, Requester, Area, URL, Attachment, Status } = request.body;
-
-    pool.query(
-        'UPDATE tasks SET Title = $1, Desc_s = $2, Desc_l = $3, Priority = $4, Owner = $5, Dept = $6, Customer = $7, Requester = $8, Area = $9, URL = $10, Attachment = $11, Status = $12 WHERE id = $13 RETURNING *',
-        [Title, Desc_s, Desc_l, Priority, Owner, Dept, Customer, Requester, Area, URL, Attachment, Status, id],
-        (error, results) => {
-            if (error) {
-                throw error;
-            }
-            response.status(200).json(results.rows[0]);
-        }
-    );
+    const { title, desc_s, desc_l, priority, owner, dept, customer, requester, area, url, attachment, status } = request.body;
+    try {
+        const pool = await getConnection();
+        await pool.request()
+            .input('id', sql.Int, id)
+            .input('title', sql.VarChar, title)
+            .input('desc_s', sql.Text, desc_s)
+            .input('desc_l', sql.Text, desc_l)
+            .input('priority', sql.Int, priority)
+            .input('owner', sql.VarChar, owner)
+            .input('dept', sql.VarChar, dept)
+            .input('customer', sql.VarChar, customer)
+            .input('requester', sql.VarChar, requester)
+            .input('area', sql.VarChar, area)
+            .input('url', sql.Text, url)
+            .input('attachment', sql.Text, attachment)
+            .input('status', sql.VarChar, status)
+            .query('UPDATE tasks SET title = @title, desc_s = @desc_s, desc_l = @desc_l, priority = @priority, owner = @owner, dept = @dept, customer = @customer, requester = @requester, area = @area, url = @url, attachment = @attachment, status = @status WHERE id = @id');
+        response.status(200).send(`Task updated with ID: ${id}`);
+    } catch (error) {
+        console.error('Error al actualizar task:', error);
+        response.status(500).send('Error al actualizar task');
+    }
 };
 
-const deleteTask = (request, response) => {
+// Eliminar un task
+const deleteTask = async (request, response) => {
     const id = parseInt(request.params.id);
-
-    pool.query('DELETE FROM tasks WHERE id = $1', [id], (error, results) => {
-        if (error) {
-            throw error;
-        }
+    try {
+        const pool = await getConnection();
+        await pool.request()
+            .input('id', sql.Int, id)
+            .query('DELETE FROM tasks WHERE id = @id');
         response.status(200).send(`Task deleted with ID: ${id}`);
-    });
+    } catch (error) {
+        console.error('Error al eliminar task:', error);
+        response.status(500).send('Error al eliminar task');
+    }
 };
 
 module.exports = {

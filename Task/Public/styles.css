@@ -29,7 +29,7 @@ form {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    max-width: 400px;
+    max-width: 800px;
     width: 100%;
     margin-bottom: 30px;
     display: flex;
@@ -37,8 +37,14 @@ form {
     align-items: center;
 }
 
-form input[type="text"], form input[type="number"], form input[type="url"] {
+.form-row {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
+}
+
+.form-row input {
+    width: 32%;
     padding: 10px;
     margin: 10px 0;
     border: 2px solid transparent;
@@ -50,7 +56,7 @@ form input[type="text"], form input[type="number"], form input[type="url"] {
     transition: border 0.3s ease, background-color 0.3s ease;
 }
 
-form input[type="text"]:focus, form input[type="number"]:focus, form input[type="url"]:focus {
+.form-row input:focus {
     border-color: #ff0000; /* Cambia el color del borde al enfocarse */
     background-color: rgba(255, 255, 255, 0.2); /* Aumenta la visibilidad del campo al enfocarse */
 }
@@ -129,6 +135,14 @@ table td button:active {
     form {
         max-width: 90%;
         padding: 20px 15px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-row input {
+        width: 100%;
     }
 
     table {

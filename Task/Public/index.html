@@ -14,18 +14,26 @@
     </header>
     <form id="taskForm">
         <input type="hidden" id="taskId">
-        <input type="text" id="taskTitle" placeholder="Title" required>
-        <input type="text" id="taskDescS" placeholder="Short Description" required>
-        <input type="text" id="taskDescL" placeholder="Long Description" required>
-        <input type="number" id="taskPriority" placeholder="Priority" required>
-        <input type="text" id="taskOwner" placeholder="Owner" required>
-        <input type="text" id="taskDept" placeholder="Department" required>
-        <input type="text" id="taskCustomer" placeholder="Customer" required>
-        <input type="text" id="taskRequester" placeholder="Requester" required>
-        <input type="text" id="taskArea" placeholder="Area" required>
-        <input type="url" id="taskURL" placeholder="URL">
-        <input type="text" id="taskAttachment" placeholder="Attachment">
-        <input type="text" id="taskStatus" placeholder="Status" required>
+        <div class="form-row">
+            <input type="text" id="taskTitle" placeholder="Title" required>
+            <input type="text" id="taskDescS" placeholder="Short Description" required>
+            <input type="text" id="taskDescL" placeholder="Long Description" required>
+        </div>
+        <div class="form-row">
+            <input type="number" id="taskPriority" placeholder="Priority" required>
+            <input type="text" id="taskOwner" placeholder="Owner" required>
+            <input type="text" id="taskDept" placeholder="Department" required>
+        </div>
+        <div class="form-row">
+            <input type="text" id="taskCustomer" placeholder="Customer" required>
+            <input type="text" id="taskRequester" placeholder="Requester" required>
+            <input type="text" id="taskArea" placeholder="Area" required>
+        </div>
+        <div class="form-row">
+            <input type="url" id="taskURL" placeholder="URL">
+            <input type="text" id="taskAttachment" placeholder="Attachment">
+            <input type="text" id="taskStatus" placeholder="Status" required>
+        </div>
         <button type="submit">Save</button>
     </form>
 

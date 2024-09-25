@@ -4,22 +4,22 @@ function fetchTasks() {
         let rows = '';
         data.forEach(task => {
             rows += `<tr>
-                <td>${task.ID}</td>
-                <td>${task.Title}</td>
-                <td>${task.Desc_s}</td>
-                <td>${task.Desc_l}</td>
-                <td>${task.Priority}</td>
-                <td>${task.Owner}</td>
-                <td>${task.Dept}</td>
-                <td>${task.Customer}</td>
-                <td>${task.Requester}</td>
-                <td>${task.Area}</td>
-                <td>${task.URL}</td>
-                <td>${task.Attachment}</td>
-                <td>${task.Status}</td>
+                <td>${task.id}</td>
+                <td>${task.title}</td>
+                <td>${task.desc_s}</td>
+                <td>${task.desc_l}</td>
+                <td>${task.priority}</td>
+                <td>${task.owner}</td>
+                <td>${task.dept}</td>
+                <td>${task.customer}</td>
+                <td>${task.requester}</td>
+                <td>${task.area}</td>
+                <td>${task.url}</td>
+                <td>${task.attachment}</td>
+                <td>${task.status}</td>
                 <td>
-                    <button onclick="editTask(${task.ID})">Edit</button>
-                    <button onclick="deleteTask(${task.ID})">Delete</button>
+                    <button onclick="editTask(${task.id})">Edit</button>
+                    <button onclick="deleteTask(${task.id})">Delete</button>
                 </td>
             </tr>`;
         });
@@ -32,18 +32,18 @@ $('#taskForm').on('submit', function(e) {
     e.preventDefault();
     const taskId = $('#taskId').val();
     const taskData = {
-        Title: $('#taskTitle').val(),
-        Desc_s: $('#taskDescS').val(),
-        Desc_l: $('#taskDescL').val(),
-        Priority: $('#taskPriority').val(),
-        Owner: $('#taskOwner').val(),
-        Dept: $('#taskDept').val(),
-        Customer: $('#taskCustomer').val(),
-        Requester: $('#taskRequester').val(),
-        Area: $('#taskArea').val(),
-        URL: $('#taskURL').val(),
-        Attachment: $('#taskAttachment').val(),
-        Status: $('#taskStatus').val()
+        title: $('#taskTitle').val(),
+        desc_s: $('#taskDescS').val(),
+        desc_l: $('#taskDescL').val(),
+        priority: $('#taskPriority').val(),
+        owner: $('#taskOwner').val(),
+        dept: $('#taskDept').val(),
+        customer: $('#taskCustomer').val(),
+        requester: $('#taskRequester').val(),
+        area: $('#taskArea').val(),
+        url: $('#taskURL').val(),
+        attachment: $('#taskAttachment').val(),
+        status: $('#taskStatus').val()
     };
 
     if (taskId) {
@@ -68,19 +68,19 @@ $('#taskForm').on('submit', function(e) {
 // Editar task
 function editTask(id) {
     $.get(`/tasks/${id}`, function(data) {
-        $('#taskId').val(data.ID);
-        $('#taskTitle').val(data.Title);
-        $('#taskDescS').val(data.Desc_s);
-        $('#taskDescL').val(data.Desc_l);
-        $('#taskPriority').val(data.Priority);
-        $('#taskOwner').val(data.Owner);
-        $('#taskDept').val(data.Dept);
-        $('#taskCustomer').val(data.Customer);
-        $('#taskRequester').val(data.Requester);
-        $('#taskArea').val(data.Area);
-        $('#taskURL').val(data.URL);
-        $('#taskAttachment').val(data.Attachment);
-        $('#taskStatus').val(data.Status);
+        $('#taskId').val(data.id);
+        $('#taskTitle').val(data.title);
+        $('#taskDescS').val(data.desc_s);
+        $('#taskDescL').val(data.desc_l);
+        $('#taskPriority').val(data.priority);
+        $('#taskOwner').val(data.owner);
+        $('#taskDept').val(data.dept);
+        $('#taskCustomer').val(data.customer);
+        $('#taskRequester').val(data.requester);
+        $('#taskArea').val(data.area);
+        $('#taskURL').val(data.url);
+        $('#taskAttachment').val(data.attachment);
+        $('#taskStatus').val(data.status);
     });
 }
 

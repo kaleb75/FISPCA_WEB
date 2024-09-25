@@ -1,4 +1,3 @@
-// Importa el módulo 'mssql' para manejar la conexión con la base de datos SQL Server
 const sql = require('mssql');
 
 // Configuración para la conexión a la base de datos
