@@ -1,4 +1,5 @@
 const { getConnection } = require('./db');
+const sql = require('mssql'); // Importar sql de mssql
 
 // Obtener todos los tasks
 const getTasks = async (request, response) => {
