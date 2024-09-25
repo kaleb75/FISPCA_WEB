@@ -1,84 +1,69 @@
-// Importar la función de conexión a la base de datos
-const { getConnection } = require('./db');
+const pool = require('./db');
 
-// Obtener todos los ítems (Read)
-const getItems = async () => {
-    try {
-        const pool = await getConnection();
-        const result = await pool.request().query('SELECT * FROM Items'); // Reemplaza 'Items' con tu tabla
-        return result.recordset;
-    } catch (error) {
-        console.error('Error al obtener ítems de la base de datos:', error);
-        throw error;
-    }
+const getTasks = (request, response) => {
+    pool.query('SELECT * FROM tasks ORDER BY id ASC', (error, results) => {
+        if (error) {
+            throw error;
+        }
+        response.status(200).json(results.rows);
+    });
 };
 
-// Obtener un ítem por ID (Read)
-const getItemById = async (id) => {
-    try {
-        const pool = await getConnection();
-        const result = await pool.request()
-            .input('id', id)
-            .query('SELECT * FROM Items WHERE id = @id'); // Reemplaza 'Items' con tu tabla
-        return result.recordset[0];
-    } catch (error) {
-        console.error('Error al obtener ítem por ID:', error);
-        throw error;
-    }
+const getTaskById = (request, response) => {
+    const id = parseInt(request.params.id);
+
+    pool.query('SELECT * FROM tasks WHERE id = $1', [id], (error, results) => {
+        if (error) {
+            throw error;
+        }
+        response.status(200).json(results.rows[0]);
+    });
 };
 
-// Crear un nuevo ítem (Create)
-const createItem = async (newItem) => {
-    try {
-        const { name, description } = newItem; // Ajusta esto según los campos de tu tabla
-        const pool = await getConnection();
-        const result = await pool.request()
-            .input('name', name)
-            .input('description', description)
-            .query('INSERT INTO Items (name, description) VALUES (@name, @description)'); // Ajusta la consulta
-        return result;
-    } catch (error) {
-        console.error('Error al crear ítem:', error);
-        throw error;
-    }
+const createTask = (request, response) => {
+    const { Title, Desc_s, Desc_l, Priority, Owner, Dept, Customer, Requester, Area, URL, Attachment, Status } = request.body;
+
+    pool.query('INSERT INTO tasks (Title, Desc_s, Desc_l, Priority, Owner, Dept, Customer, Requester, Area, URL, Attachment, Status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *', 
+    [Title, Desc_s, Desc_l, Priority, Owner, Dept, Customer, Requester, Area, URL, Attachment, Status], 
+    (error, results) => {
+        if (error) {
+            throw error;
+        }
+        response.status(201).json(results.rows[0]);
+    });
 };
 
-// Actualizar un ítem (Update)
-const updateItem = async (id, updatedItem) => {
-    try {
-        const { name, description } = updatedItem; // Ajusta esto según los campos de tu tabla
-        const pool = await getConnection();
-        const result = await pool.request()
-            .input('id', id)
-            .input('name', name)
-            .input('description', description)
-            .query('UPDATE Items SET name = @name, description = @description WHERE id = @id'); // Ajusta la consulta
-        return result;
-    } catch (error) {
-        console.error('Error al actualizar ítem:', error);
-        throw error;
-    }
+const updateTask = (request, response) => {
+    const id = parseInt(request.params.id);
+    const { Title, Desc_s, Desc_l, Priority, Owner, Dept, Customer, Requester, Area, URL, Attachment, Status } = request.body;
+
+    pool.query(
+        'UPDATE tasks SET Title = $1, Desc_s = $2, Desc_l = $3, Priority = $4, Owner = $5, Dept = $6, Customer = $7, Requester = $8, Area = $9, URL = $10, Attachment = $11, Status = $12 WHERE id = $13 RETURNING *',
+        [Title, Desc_s, Desc_l, Priority, Owner, Dept, Customer, Requester, Area, URL, Attachment, Status, id],
+        (error, results) => {
+            if (error) {
+                throw error;
+            }
+            response.status(200).json(results.rows[0]);
+        }
+    );
 };
 
-// Eliminar un ítem (Delete)
-const deleteItem = async (id) => {
-    try {
-        const pool = await getConnection();
-        const result = await pool.request()
-            .input('id', id)
-            .query('DELETE FROM Items WHERE id = @id'); // Ajusta la consulta
-        return result;
-    } catch (error) {
-        console.error('Error al eliminar ítem:', error);
-        throw error;
-    }
+const deleteTask = (request, response) => {
+    const id = parseInt(request.params.id);
+
+    pool.query('DELETE FROM tasks WHERE id = $1', [id], (error, results) => {
+        if (error) {
+            throw error;
+        }
+        response.status(200).send(`Task deleted with ID: ${id}`);
+    });
 };
 
-// Exportar las funciones
 module.exports = {
-    getItems,
-    getItemById,
-    createItem,
-    updateItem,
-    deleteItem
+    getTasks,
+    getTaskById,
+    createTask,
+    updateTask,
+    deleteTask,
 };
