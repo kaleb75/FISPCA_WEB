@@ -1,0 +1,113 @@
+/* Fondo con degradado negro-gris con un toque de rojo */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(165deg, #121212, #000000, #ff0000d8);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    color: #fff; /* Color de texto blanco por defecto */
+}
+
+/* Contenedor para centrar la caja de login */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilo para la imagen del logo */
+.logo {
+    width: 200px; /* Ajusta el tamaño según tus necesidades */
+    margin-bottom: 20px;
+}
+
+/* Caja de login centrada */
+.login-box {
+    background-color: #4e1d1d;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    max-width: 350px;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.login-box:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+/* Título del login */
+h2 {
+    color: #ff0000c7;
+    margin-bottom: 30px;
+    font-size: 24px;
+    letter-spacing: 1px; /* Añade espaciado entre letras */
+}
+
+/* Campos de input */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    outline: none;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #ff0000; /* Cambia el color del borde al enfocarse */
+    background-color: rgba(255, 255, 255, 0.2); /* Aumenta la visibilidad del campo al enfocarse */
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Botón estilizado */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff0000c7;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #d40000; /* Color más oscuro en hover */
+    transform: translateY(-3px); /* Efecto de elevación al pasar el mouse */
+}
+
+button:active {
+    transform: translateY(1px); /* Efecto al presionar el botón */
+}
+
+/* Mensaje de error */
+.error-message {
+    color: #ff4c4c;
+    margin-top: 15px;
+    font-size: 14px;
+    display: none;
+}
+
+/* Mejorando el estilo en pantallas pequeñas */
+@media (max-width: 768px) {
+    .login-box {
+        max-width: 90%;
+        padding: 30px 20px;
+    }
+}
