@@ -100,6 +100,34 @@ const deleteTask = async (request, response) => {
     }
 };
 
+const markTaskAsCompleted = async (taskId) => {
+    try {
+        const pool = await getConnection();
+        await pool.request()
+            .input('taskId', taskId)
+            .query('UPDATE tasks SET completed_at = GETDATE() WHERE id = @taskId');
+        console.log(`Task ${taskId} marcada como completada.`);
+    } catch (error) {
+        console.error('Error al marcar task como completada:', error);
+    }
+};
+const archiveCompletedTasks = async () => {
+    try {
+        const pool = await getConnection();
+        // Mover las tasks completadas a la tabla de archivo
+        await pool.request().query(`
+            INSERT INTO tasks_archive
+            SELECT * FROM tasks WHERE completed_at IS NOT NULL;
+
+            DELETE FROM tasks WHERE completed_at IS NOT NULL;
+        `);
+        console.log('Tareas completadas archivadas con éxito.');
+    } catch (error) {
+        console.error('Error al archivar tareas completadas:', error);
+    }
+};
+
+
 // Exportar las funciones para que estén disponibles en otros módulos
 module.exports = {
     getTasks,
