@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const sql = require('./db');
+const path = require('path');
+
+// Ruta para la raíz
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public', 'index.html'));
+});
 
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
