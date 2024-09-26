@@ -25,4 +25,5 @@ app.delete('/tasks/:id', db.deleteTask);
 // Iniciar el servidor
 app.listen(port, () => {
     console.log(`App running on port ${port}.`);
+    console.log(`La aplicacion esta corriendo ejecuta en tu navegador http://localhost:${port}.`);
 });
