@@ -1,152 +1,152 @@
 /* Fondo con degradado negro-gris con un toque de rojo */
 body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(165deg, #121212, #000000, #ff0000d8);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Arial', sans-serif;
-    color: #fff; /* Color de texto blanco por defecto */
+    margin: 0; /* Elimina el margen predeterminado del cuerpo */
+    padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+    background: linear-gradient(165deg, #121212, #000000, #ff0000d8); /* Fondo con degradado en ángulo de 165 grados */
+    min-height: 100vh; /* Asegura que el fondo cubra al menos toda la altura de la pantalla */
+    display: flex; /* Utiliza Flexbox para centrar el contenido */
+    flex-direction: column; /* Alinea los elementos de arriba hacia abajo */
+    align-items: center; /* Centra los elementos horizontalmente */
+    font-family: 'Arial', sans-serif; /* Define la fuente para el texto */
+    color: #fff; /* Establece el color de texto blanco por defecto */
 }
 
 /* Estilo para el encabezado */
 header {
-    margin-top: 20px;
-    text-align: center;
+    margin-top: 20px; /* Añade margen superior al encabezado */
+    text-align: center; /* Centra el texto del encabezado */
 }
 
 header h1 {
-    color: #ff0000c7;
-    font-size: 32px;
-    margin-bottom: 20px;
+    color: #ff0000c7; /* Color rojo con transparencia para el texto del encabezado */
+    font-size: 32px; /* Tamaño de fuente del encabezado */
+    margin-bottom: 20px; /* Espacio debajo del encabezado */
 }
 
 /* Formulario de ítems */
 form {
-    background-color: #4e1d1d;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    max-width: 800px;
-    width: 100%;
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: #4e1d1d; /* Fondo del formulario de color rojo oscuro */
+    padding: 20px; /* Añade espacio interno al formulario */
+    border-radius: 15px; /* Bordes redondeados del formulario */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Añade sombra al formulario */
+    max-width: 800px; /* Ancho máximo del formulario */
+    width: 100%; /* Ancho del formulario al 100% del contenedor */
+    margin-bottom: 30px; /* Espacio inferior */
+    display: flex; /* Utiliza Flexbox */
+    flex-direction: column; /* Alinea los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
 }
 
 .form-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+    display: flex; /* Utiliza Flexbox para las filas del formulario */
+    justify-content: space-between; /* Distribuye el espacio entre los inputs */
+    width: 100%; /* Ocupa el 100% del ancho del formulario */
 }
 
 .form-row input {
-    width: 32%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    outline: none;
-    transition: border 0.3s ease, background-color 0.3s ease;
+    width: 32%; /* Ancho del 32% para cada input */
+    padding: 10px; /* Añade espacio interno a los inputs */
+    margin: 10px 0; /* Espacio vertical de 10px */
+    border: 2px solid transparent; /* Borde transparente inicialmente */
+    border-radius: 10px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
+    color: #ffffff; /* Color de texto blanco */
+    outline: none; /* Elimina el contorno al enfocarse */
+    transition: border 0.3s ease, background-color 0.3s ease; /* Animación para cambios de borde y fondo */
 }
 
 .form-row input:focus {
-    border-color: #ff0000; /* Cambia el color del borde al enfocarse */
-    background-color: rgba(255, 255, 255, 0.2); /* Aumenta la visibilidad del campo al enfocarse */
+    border-color: #ff0000; /* Color rojo en el borde al enfocar */
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo más visible al enfocar */
 }
 
 form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #3d0000e4;
-    color: #fff;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%; /* Ocupa el 100% del ancho del formulario */
+    padding: 12px; /* Añade espacio interno */
+    background-color: #3d0000e4; /* Color de fondo del botón */
+    color: #fff; /* Color de texto blanco */
+    border: none; /* Elimina el borde */
+    border-radius: 25px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 18px; /* Tamaño de fuente */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Añade animación */
 }
 
 form button:hover {
-    background-color: #d40000; /* Color más oscuro en hover */
-    transform: translateY(-3px); /* Efecto de elevación al pasar el mouse */
+    background-color: #d40000; /* Cambia el color de fondo al pasar el mouse */
+    transform: translateY(-3px); /* Mueve el botón hacia arriba */
 }
 
 form button:active {
-    transform: translateY(1px); /* Efecto al presionar el botón */
+    transform: translateY(1px); /* Mueve el botón hacia abajo al hacer clic */
 }
 
 /* Título de la sección de ítems */
 h2 {
-    color: #be0404c7;
-    margin-bottom: 20px;
-    font-size: 24px;
+    color: #150000bb; /* Color oscuro con transparencia */
+    margin-bottom: 20px; /* Espacio inferior */
+    font-size: 24px; /* Tamaño de fuente */
     letter-spacing: 1px; /* Añade espaciado entre letras */
 }
 
 /* Tabla de ítems */
 table {
-    width: 90%;
-    max-width: 800px;
-    margin-bottom: 30px;
-    border-collapse: collapse;
-    background-color: #4e1d1d;
-    color: #fff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    width: 90%; /* Ocupa el 90% del ancho del contenedor */
+    max-width: 800px; /* Ancho máximo */
+    margin-bottom: 30px; /* Espacio inferior */
+    border-collapse: collapse; /* Colapsa los bordes de las celdas */
+    background-color: #4e1d1d; /* Fondo de la tabla */
+    color: #160000; /* Color del texto */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Añade sombra */
 }
 
 table th, table td {
-    padding: 10px;
-    border: .5px solid #000000;
-    text-align: center;
+    padding: 10px; /* Añade espacio interno a celdas */
+    border: .5px solid #000000; /* Borde de celdas */
+    text-align: center; /* Centra el texto */
 }
 
 table th {
-    background-color: #ff000068;
-    border-radius: 10px;
+    background-color: #ff000068; /* Fondo del encabezado de tabla */
+    border-radius: 10px; /* Bordes redondeados */
 }
 
 table td button {
-    padding: 10px;
-    background-color: #ff000085;
-    color: #fff;
-    border: #4e1d1d;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    padding: 10px; /* Añade espacio interno */
+    background-color: #ff000085; /* Fondo del botón */
+    color: #fff; /* Color de texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Añade animación */
 }
 
 table td button:hover {
-    background-color: #d40000; /* Color más oscuro en hover */
-    transform: translateY(-3px); /* Efecto de elevación al pasar el mouse */
+    background-color: #d40000; /* Fondo más oscuro al pasar el mouse */
+    transform: translateY(-3px); /* Mueve el botón hacia arriba */
 }
 
 table td button:active {
-    transform: translateY(1px); /* Efecto al presionar el botón */
+    transform: translateY(1px); /* Mueve el botón hacia abajo al hacer clic */
 }
 
 /* Mejorando el estilo en pantallas pequeñas */
 @media (max-width: 768px) {
     form {
-        max-width: 90%;
-        padding: 20px 15px;
+        max-width: 90%; /* Reduce el ancho máximo del formulario */
+        padding: 20px 15px; /* Ajusta el relleno interno */
     }
 
     .form-row {
-        flex-direction: column;
+        flex-direction: column; /* Cambia la dirección a columna para mejor visualización */
     }
 
     .form-row input {
-        width: 100%;
+        width: 100%; /* Hace que los inputs ocupen el 100% del ancho disponible */
     }
 
     table {
-        width: 100%;
+        width: 100%; /* Hace que la tabla ocupe el 100% del ancho disponible */
     }
 }
