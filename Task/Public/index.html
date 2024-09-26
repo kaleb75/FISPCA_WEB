@@ -4,45 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OT | FIS Task Management</title>
+    <!-- Favicon for the webpage -->
     <link rel="shorcut icon" href="https://ai.inventec.com/wp-content/uploads/2022/06/favicon-1.png">
+    <!-- Link to external CSS stylesheet -->
     <link rel="stylesheet" href="styles.css">
+    <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Link to the main JavaScript file for functionality -->
     <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- Page header with company logo and title -->
     <header>
-        <center><img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Inventec.png" alt="Inventec Logo.png" width="250px"></center>
+        <center>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Inventec.png" alt="Inventec Logo" width="250px">
+        </center>
         <h1>OT Task Management</h1>
     </header>
+    
+    <!-- Form for creating or editing tasks -->
     <form id="taskForm">
+        <!-- Hidden input to store the task ID -->
         <input type="hidden" id="taskId">
+        
+        <!-- Row for title and description inputs -->
         <div class="form-row">
             <input type="text" id="taskTitle" placeholder="Title" required>
             <input type="text" id="taskDescS" placeholder="Short Description" required>
             <input type="text" id="taskDescL" placeholder="Long Description" required>
         </div>
+        
+        <!-- Row for priority, owner, and department inputs -->
         <div class="form-row">
             <input type="number" id="taskPriority" placeholder="Priority" required>
             <input type="text" id="taskOwner" placeholder="Owner" required>
             <input type="text" id="taskDept" placeholder="Department" required>
         </div>
+        
+        <!-- Row for customer, requester, and area inputs -->
         <div class="form-row">
             <input type="text" id="taskCustomer" placeholder="Customer" required>
             <input type="text" id="taskRequester" placeholder="Requester" required>
             <input type="text" id="taskArea" placeholder="Area" required>
         </div>
+        
+        <!-- Row for URL, attachment, and status inputs -->
         <div class="form-row">
             <input type="url" id="taskURL" placeholder="URL">
             <input type="text" id="taskAttachment" placeholder="Attachment">
             <input type="text" id="taskStatus" placeholder="Status" required>
         </div>
+        
+        <!-- Submit button to save the task -->
         <button type="submit">Save</button>
     </form>
-
+    
+    <!-- Section to display the list of tasks -->
     <h2>Tasks</h2>
     <table border="1">
         <thead>
             <tr>
+                <!-- Table headers for task attributes -->
                 <th>ID</th>
                 <th>Title</th>
                 <th>Short Description</th>
@@ -56,10 +78,10 @@
                 <th>URL</th>
                 <th>Attachment</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th>Actions</th> <!-- Actions for editing or deleting -->
             </tr>
         </thead>
-        <tbody id="taskList"></tbody>
+        <tbody id="taskList"></tbody> <!-- Dynamic task list populated by script.js -->
     </table>
 </body>
 </html>
