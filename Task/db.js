@@ -17,38 +17,12 @@ const config = {
     }
 };
 
-// Variable para mantener una conexión reutilizable
-let poolPromise;
-
-// Función para obtener una conexión a la base de datos
-const getConnection = async () => {
-    try {
-        if (!poolPromise) {
-            poolPromise = sql.connect(config);
-        }
-        const pool = await poolPromise;
-        return pool;
-    } catch (error) {
-        console.error('Error al obtener la conexión a la base de datos:', error);
-        throw error;
+sql.connect(config, err => {
+    if (err) {
+        console.error('Error connecting to the database:', err);
+    } else {
+        console.log('Connected to SQL Server');
     }
-};
-
-// Manejo de cierre de conexión cuando la aplicación termina
-process.on('SIGINT', async () => {
-    console.log('Cerrando la conexión a la base de datos...');
-    if (poolPromise) {
-        try {
-            await sql.close();
-            console.log('Conexión cerrada exitosamente.');
-        } catch (error) {
-            console.error('Error al cerrar la conexión a la base de datos:', error);
-        }
-    }
-    process.exit(0);
 });
 
-// Exportar la función de conexión
-module.exports = {
-    getConnection
-};
+module.exports = sql;
