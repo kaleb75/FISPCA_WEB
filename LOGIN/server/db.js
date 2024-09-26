@@ -1,22 +1,28 @@
 const sql = require('mssql');
 
+// Configuración para la conexión a la base de datos
 const config = {
-  user: 'your_username',
-  password: 'your_password',
-  server: 'your_server',
-  database: 'your_database',
-  options: {
-    encrypt: true, // Use this if you're on Windows Azure
-    trustServerCertificate: true // Change to true for local dev / self-signed certs
-  }
+    user: 'taopcav2',
+    password: 'Pca2.0@Mes',
+    server: 'IMX2SQL',
+    database: 'PCA',
+    options: {
+        encrypt: true, // Utilizar cifrado si es necesario
+        trustServerCertificate: true // Solo si estás utilizando certificados de servidor no verificados
+    },
+    pool: {
+        max: 10, // Número máximo de conexiones en el pool
+        min: 0,
+        idleTimeoutMillis: 30000 // Tiempo de espera antes de liberar una conexión no utilizada
+    }
 };
 
 sql.connect(config, err => {
-  if (err) {
-    console.error('Error connecting to the database:', err);
-  } else {
-    console.log('Connected to SQL Server');
-  }
+    if (err) {
+        console.error('Error connecting to the database:', err);
+    } else {
+        console.log('Connected to SQL Server');
+    }
 });
 
 module.exports = sql;
