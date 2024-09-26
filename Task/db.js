@@ -17,12 +17,18 @@ const config = {
     }
 };
 
-sql.connect(config, err => {
-    if (err) {
-        console.error('Error connecting to the database:', err);
-    } else {
-        console.log('Connected to SQL Server');
+// Función para obtener una conexión a la base de datos
+async function getConnection() {
+    try {
+        const pool = await sql.connect(config);
+        return pool;
+    } catch (error) {
+        console.error('Error connecting to the database:', error);
+        throw error;
     }
-});
+}
 
-module.exports = sql;
+module.exports = {
+    sql, // Exportar el objeto `sql` en caso de que necesites hacer referencia a él
+    getConnection // Exportar la función `getConnection`
+};
