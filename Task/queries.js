@@ -48,7 +48,11 @@ const createTask = async (request, response) => {
             .input('url', sql.Text, url)
             .input('attachment', sql.Text, attachment)
             .input('status', sql.VarChar, status)
-            .query('INSERT INTO tasks (title, desc_s, desc_l, priority, owner, dept, customer, requester, area, url, attachment, status) VALUES (@title, @desc_s, @desc_l, @priority, @owner, @dept, @customer, @requester, @area, @url, @attachment, @status); SELECT SCOPE_IDENTITY() AS id'); // Ejecutar la consulta de inserción y obtener el ID generado
+            .query(`
+                INSERT INTO tasks (title, desc_s, desc_l, priority, owner, dept, customer, requester, area, url, attachment, status, cdt, udt) 
+                VALUES (@title, @desc_s, @desc_l, @priority, @owner, @dept, @customer, @requester, @area, @url, @attachment, @status, GETDATE(), GETDATE());
+                SELECT SCOPE_IDENTITY() AS id
+            `); // Ejecutar la consulta de inserción y obtener el ID generado
         response.status(201).json({ id: result.recordset[0].id }); // Enviar el ID del nuevo task como respuesta
     } catch (error) {
         console.error('Error al crear task:', error); // Registrar el error en la consola
@@ -77,7 +81,11 @@ const updateTask = async (request, response) => {
             .input('url', sql.Text, url)
             .input('attachment', sql.Text, attachment)
             .input('status', sql.VarChar, status)
-            .query('UPDATE tasks SET title = @title, desc_s = @desc_s, desc_l = @desc_l, priority = @priority, owner = @owner, dept = @dept, customer = @customer, requester = @requester, area = @area, url = @url, attachment = @attachment, status = @status WHERE id = @id'); // Ejecutar la consulta de actualización
+            .query(`
+                UPDATE tasks 
+                SET title = @title, desc_s = @desc_s, desc_l = @desc_l, priority = @priority, owner = @owner, dept = @dept, customer = @customer, requester = @requester, area = @area, url = @url, attachment = @attachment, status = @status, udt = GETDATE() 
+                WHERE id = @id
+            `); // Ejecutar la consulta de actualización
         response.status(200).send(`Task updated with ID: ${id}`); // Enviar un mensaje de éxito al cliente
     } catch (error) {
         console.error('Error al actualizar task:', error); // Registrar el error en la consola
@@ -100,17 +108,20 @@ const deleteTask = async (request, response) => {
     }
 };
 
+// Función para marcar un task como completado
 const markTaskAsCompleted = async (taskId) => {
     try {
         const pool = await getConnection();
         await pool.request()
-            .input('taskId', taskId)
+            .input('taskId', sql.Int, taskId)
             .query('UPDATE tasks SET completed_at = GETDATE() WHERE id = @taskId');
         console.log(`Task ${taskId} marcada como completada.`);
     } catch (error) {
         console.error('Error al marcar task como completada:', error);
     }
 };
+
+// Función para archivar tasks completadas
 const archiveCompletedTasks = async () => {
     try {
         const pool = await getConnection();
@@ -127,7 +138,6 @@ const archiveCompletedTasks = async () => {
     }
 };
 
-
 // Exportar las funciones para que estén disponibles en otros módulos
 module.exports = {
     getTasks,
@@ -135,4 +145,6 @@ module.exports = {
     createTask,
     updateTask,
     deleteTask,
+    markTaskAsCompleted,
+    archiveCompletedTasks
 };
