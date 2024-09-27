@@ -41,10 +41,10 @@ form {
     display: flex; /* Utiliza Flexbox para las filas del formulario */
     justify-content: space-between; /* Distribuye el espacio entre los inputs */
     width: 100%; /* Ocupa el 100% del ancho del formulario */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
 }
 
 .form-row input {
-    width: 32%; /* Ancho del 32% para cada input */
     padding: 10px; /* Añade espacio interno a los inputs */
     margin: 10px 0; /* Espacio vertical de 10px */
     border: 2px solid transparent; /* Borde transparente inicialmente */
@@ -149,4 +149,37 @@ table td button:active {
     table {
         width: 100%; /* Hace que la tabla ocupe el 100% del ancho disponible */
     }
+}
+
+/* Clases para ajustar el tamaño de los inputs */
+.x1y1 {
+    width: 10%; /* Ajusta el ancho al 10% */
+    height: 40px; /* Ajusta la altura */
+}
+
+.x2y1 {
+    width: 20%; /* Ajusta el ancho al 20% */
+    height: 40px; /* Ajusta la altura */
+}
+
+.x3y1 {
+    width: 30%; /* Ajusta el ancho al 30% */
+    height: 40px; /* Ajusta la altura */
+}
+
+.x3y3 {
+    width: 30%; /* Ajusta el ancho al 30% */
+    height: 120px; /* Ajusta la altura */
+}
+
+.x5y1 {
+    width: 50%; /* Ajusta el ancho al 50% */
+    height: 40px; /* Ajusta la altura */
+}
+
+/* Estilo para las celdas de la tabla */
+.tg-0pky {
+    padding: 10px;
+    border: 1px solid #000;
+    text-align: center;
 }
