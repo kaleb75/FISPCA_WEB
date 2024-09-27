@@ -29,30 +29,33 @@
         
         <!-- Row for title and description inputs -->
         <div class="form-row">
-            <input type="text" id="taskTitle" placeholder="Title" required>
-            <input type="text" id="taskDescS" placeholder="Short Description" required>
-            <input type="text" id="taskDescL" placeholder="Long Description" required>
+            <input type="text" id="taskTitle" placeholder="Title" class="x3y1" required>
+            <input type="text" id="taskDescS" placeholder="Short Description" class="x5y1" required>
+        </div>
+        <div class="form-row">
+            <input type="text" id="taskDescL" placeholder="Long Description" class="x3y3" required>
         </div>
         
         <!-- Row for priority, owner, and department inputs -->
         <div class="form-row">
-            <input type="number" id="taskPriority" placeholder="Priority" required>
-            <input type="text" id="taskOwner" placeholder="Owner" required>
-            <input type="text" id="taskDept" placeholder="Department" required>
+            <input type="number" id="taskPriority" placeholder="Priority" class="x1y1" required>
+            <input type="text" id="taskStatus" placeholder="Status" class="x2y1" required>
+            <input type="text" id="taskOwner" placeholder="Owner" class="x2y1" required>
+            <input type="text" id="taskDept" placeholder="Department" class="x3y1" required>
         </div>
         
         <!-- Row for customer, requester, and area inputs -->
         <div class="form-row">
-            <input type="text" id="taskCustomer" placeholder="Customer" required>
-            <input type="text" id="taskRequester" placeholder="Requester" required>
-            <input type="text" id="taskArea" placeholder="Area" required>
+            <input type="text" id="taskCustomer" placeholder="Customer" class="x3y1" required>
+            <input type="text" id="taskRequester" placeholder="Requester" class="x3y1" required>
+            <input type="text" id="taskArea" placeholder="Area" class="x3y1" required>
         </div>
         
         <!-- Row for URL, attachment, and status inputs -->
         <div class="form-row">
-            <input type="url" id="taskURL" placeholder="URL">
-            <input type="text" id="taskAttachment" placeholder="Attachment">
-            <input type="text" id="taskStatus" placeholder="Status" required>
+            <input type="url" id="taskURL" placeholder="URL" class="x5y1">
+            <input type="text" id="taskAttachment" placeholder="Attachment" class="x3y1">
+            
         </div>
         
         <!-- Submit button to save the task -->
@@ -64,41 +67,12 @@
     <table border="1">
         <thead>
             <tr>
-                <!-- Table headers for task attributes -->
-                <th>ID</th>
-                <th>Title</th>
-                <th>Short Description</th>
-                <th>Long Description</th>
-                <th>Priority</th>
-                <th>Owner</th>
-                <th>Department</th>
-                <th>Customer</th>
-                <th>Requester</th>
-                <th>Area</th>
-                <th>URL</th>
-                <th>Attachment</th>
-                <th>Status</th>
-                <th>Actions</th> <!-- Actions for editing or deleting -->
-            </tr>
-        </thead>
-        <tbody id="taskList"></tbody> <!-- Dynamic task list populated by script.js -->
-    </table>
+                <th class="tg-0pky">Title</th>
+                <th class="tg-0pky">Short Description</th>
+                <th class="tg-0pky">Status</th>
+                <th class="tg-0pky">Priority</th>
+                <th class="tg-0pky"></th>
 
-    
-    <table id="tasksTable">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Priority</th>
-                <th>Owner</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Aquí van las filas de tasks -->
-        </tbody>
     </table>
-    
 </body>
 </html>
