@@ -1,3 +1,4 @@
+//queries.js
 // Importar la función getConnection desde el archivo de base de datos
 const { getConnection } = require('./db');
 const sql = require('mssql'); // Importar el módulo mssql para manejar consultas SQL

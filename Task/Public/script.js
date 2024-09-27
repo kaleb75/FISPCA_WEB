@@ -1,3 +1,4 @@
+//script.js
 // Obtener todas las tareas del servidor
 function fetchTasks() {
     $.get('/tasks', function(data) {
