@@ -75,7 +75,7 @@ form button {
 }
 
 form button:hover {
-    background-color: #d40000; /* Cambia el color de fondo al pasar el mouse */
+    background-color: #c5a9a9; /* Cambia el color de fondo al pasar el mouse */
     transform: translateY(-3px); /* Mueve el botón hacia arriba */
 }
 
@@ -98,7 +98,7 @@ table {
     margin-bottom: 30px; /* Espacio inferior */
     border-collapse: collapse; /* Colapsa los bordes de las celdas */
     background-color: #4e1d1d; /* Fondo de la tabla */
-    color: #160000; /* Color del texto */
+    color: #ffffff; /* Color del texto */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Añade sombra */
 }
 
@@ -169,12 +169,12 @@ table td button:active {
 }
 
 .x3y3 {
-    width: 30%; /* Ajusta el ancho al 30% */
-    height: 120px; /* Ajusta la altura */
+    width: 100%; /* Ajusta el ancho al 30% */
+    height: 40px; /* Ajusta la altura */
 }
 
 .x5y1 {
-    width: 50%; /* Ajusta el ancho al 50% */
+    width: 60%; /* Ajusta el ancho al 50% */
     height: 40px; /* Ajusta la altura */
 }
 
