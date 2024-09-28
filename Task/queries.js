@@ -99,13 +99,13 @@ const deleteTask = async (request, response) => {
     const id = parseInt(request.params.id); // Obtener el ID de los parámetros de la solicitud y convertirlo a entero
     try {
         const pool = await getConnection(); // Establecer conexión con la base de datos
-        await pool.request()
-            .input('id', sql.Int, id)
-            .query('DELETE FROM tasks WHERE id = @id'); // Ejecutar la consulta para eliminar el task con el ID especificado
-        response.status(200).send(`Task deleted with ID: ${id}`); // Enviar un mensaje de éxito al cliente
+      await pool.request()
+        .input('id', sql.Int, id)
+      .query('DELETE FROM tasks WHERE id = @id'); // Ejecutar la consulta para eliminar el task con el ID especificado
+      response.status(200).send(`Task deleted with ID: ${id}`); // Enviar un mensaje de éxito al cliente
     } catch (error) {
-        console.error('Error al eliminar task:', error); // Registrar el error en la consola
-        response.status(500).send('Error al eliminar task'); // Enviar un mensaje de error al cliente
+     console.error('Error al eliminar task:', error); // Registrar el error en la consola
+        //response.status(500).send('Error al eliminar task'); // Enviar un mensaje de error al cliente
     }
 };
 
@@ -138,6 +138,7 @@ const archiveCompletedTasks = async () => {
         console.error('Error al archivar tareas completadas:', error);
     }
 };
+
 
 // Exportar las funciones para que estén disponibles en otros módulos
 module.exports = {
