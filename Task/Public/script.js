@@ -19,11 +19,12 @@ function fetchTasks() {
                 <td>${task.url}</td>
                 <td>${task.attachment}</td>
                 <td>${task.status}</td>
-                <td>
-                    <!-- Botones para editar y eliminar tareas -->
-                    <button onclick="editTask(${task.id})">Editar</button>
-                    <button onclick="deleteTask(${task.id})">Eliminar</button>
-                </td>
+       <td>
+    <button onclick="editTask(${task.id})">Edit/Update</button>
+    <button onclick="deleteTask(${task.id})">Delete</button>
+    <button onclick="markTaskAsCompleted(${task.id})" ${task.status === 'completado' ? 'disabled' : ''}>Done</button>
+</td>
+
             </tr>`;
         });
         // Inserta las filas generadas en el cuerpo de la tabla de tareas
@@ -101,5 +102,24 @@ function deleteTask(id) {
     });
 }
 
-// Obtener todas las tareas cuando la página haya cargado completamente
-$(document).ready(fetchTasks);
+// Función para marcar un task como completado
+async function markTaskAsCompleted(taskId) {
+    try {
+        const response = await $.ajax({
+            url: `/tasks/${taskId}/complete`,
+            method: 'PUT'
+        });
+        console.log(`Task ${taskId} marcada como completada.`);
+        
+        // Actualiza la lista de tareas después de marcarla como completada
+        fetchTasks();
+    } catch (error) {
+        console.error('Error al marcar task como completada:', error);
+    }
+}
+
+
+// Llama a fetchTasks cuando la página se haya cargado
+$(document).ready(function() {
+    fetchTasks();
+});
