@@ -1,0 +1,79 @@
+/* Estilo global */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(165deg, #1a1a1a, #4a4a4a);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+}
+
+/* Encabezado */
+header img {
+    max-width: 200px;
+}
+header h1 {
+    color: #ff6161;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Contenedor */
+.container {
+    max-width: 1200px;
+}
+
+/* Formulario */
+form {
+    background-color: #f8f9fa;
+}
+form textarea {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    resize: none;
+    transition: border-color 0.3s;
+}
+form textarea:focus {
+    border-color: #007bff;
+}
+form button {
+    transition: background-color 0.3s, transform 0.2s;
+}
+form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* Tabla */
+table {
+    background-color: #fff;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+table thead {
+    background-color: #343a40;
+}
+table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Spinner de carga */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+    form textarea {
+        width: 100%;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+}
