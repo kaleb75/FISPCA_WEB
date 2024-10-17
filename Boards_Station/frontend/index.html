@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board's Station</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="text-center my-4">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Inventec.png" alt="Inventec Logo" width="15%">
+        <h1 class="mt-3">Board's Station</h1>
+    </header>
+
+    <div class="container mt-4">
+        <!-- Formulario de entrada -->
+        <form id="pcaForm" class="p-4 rounded shadow-sm bg-light">
+            <div class="form-group">
+                <label for="serialNumbers" class="font-weight-bold">
+                    Enter Serial Numbers (one per line) / Ingresa el número de serie (Uno por línea):
+                </label>
+                <textarea id="serialNumbers" rows="8" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Run PCA Execution</button>
+        </form>
+
+        <!-- Spinner de carga -->
+        <div id="loadingSpinner" class="text-center my-4" style="display: none;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Resultados -->
+        <h2 class="text-center text-danger mt-5">Results</h2>
+        <table class="table table-hover mt-3">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Internal_SN</th>
+                    <th>Customer_SN</th>
+                    <th>Line</th>
+                    <th>Model</th>
+                    <th>Current_Station</th>
+                    <th>Next_Station</th>
+                </tr>
+            </thead>
+            <tbody id="resultsTableBody">
+                <!-- Resultados dinámicos -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
