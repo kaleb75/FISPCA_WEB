@@ -1,3 +1,4 @@
+// LOGIN/public/script.js
 document.getElementById('loginForm').addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -5,30 +6,23 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
   const password = document.getElementById('password').value;
   const errorMessage = document.getElementById('errorMessage');
 
-  if (!username || !password) {
-    errorMessage.textContent = 'Please enter both username and password.';
-    errorMessage.style.display = 'block';
-    return;
-  }
-
   fetch('/login', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password })
   })
     .then(response => response.json())
     .then(data => {
       if (data.success) {
-        window.location.href = '/dashboard';
+        localStorage.setItem('token', data.token); // Guardar el token
+        window.location.href = '/tasks'; // Redirigir a tareas
       } else {
-        errorMessage.textContent = 'Invalid username or password.';
+        errorMessage.textContent = data.message;
         errorMessage.style.display = 'block';
       }
     })
-    .catch(err => {
-      errorMessage.textContent = 'Error connecting to the server.';
+    .catch(() => {
+      errorMessage.textContent = 'Error al conectar con el servidor.';
       errorMessage.style.display = 'block';
     });
 });
