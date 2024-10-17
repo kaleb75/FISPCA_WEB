@@ -19,12 +19,11 @@ function fetchTasks() {
                 <td>${task.url}</td>
                 <td>${task.attachment}</td>
                 <td>${task.status}</td>
-       <td>
-    <button onclick="editTask(${task.id})">Edit/Update</button>
-    <button onclick="deleteTask(${task.id})">Delete</button>
-    <button onclick="markTaskAsCompleted(${task.id})" ${task.status === 'completado' ? 'disabled' : ''}>Done</button>
-</td>
-
+                <td>
+                    <button onclick="editTask(${task.id})">Edit/Update</button>
+                    <button onclick="deleteTask(${task.id})">Delete</button>
+                    <button onclick="markTaskAsCompleted(${task.id})" ${task.status === 'completado' ? 'disabled' : ''}>Done</button>
+                </td>
             </tr>`;
         });
         // Inserta las filas generadas en el cuerpo de la tabla de tareas
@@ -123,3 +122,29 @@ async function markTaskAsCompleted(taskId) {
 $(document).ready(function() {
     fetchTasks();
 });
+// Task/Public/script.js
+document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '/'; // Redirigir al login si no hay token
+      return;
+    }
+  
+    fetch('/tasks', {
+      method: 'GET',
+      headers: { 'Authorization': token }
+    })
+      .then(response => response.json())
+      .then(tasks => {
+        const taskContainer = document.getElementById('taskContainer');
+        tasks.forEach(task => {
+          const taskElement = document.createElement('div');
+          taskElement.textContent = `${task.titulo}: ${task.descripcion}`;
+          taskContainer.appendChild(taskElement);
+        });
+      })
+      .catch(() => {
+        alert('Error al cargar las tareas');
+      });
+  });
+  
