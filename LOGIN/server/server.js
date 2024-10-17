@@ -1,30 +1,19 @@
+// LOGIN/server/server.js
 const express = require('express');
-const session = require('express-session');
 const bodyParser = require('body-parser');
-const path = require('path');
-const routes = require('./routes');
+const jwt = require('jsonwebtoken'); // Para autenticación JWT
+const loginRoutes = require('./routes'); // Rutas de login
+const taskRoutes = require('../../Task/queries'); // Rutas de tareas
+const { verifyToken } = require('./middleware'); // Middleware para proteger rutas
 
 const app = express();
-
-// Configurar body-parser para manejar solicitudes POST
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public')); // Sirve archivos estáticos (HTML, CSS, JS)
 
-// Configurar express-session para manejar sesiones
-app.use(session({
-    secret: 'your_secret_key',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 60000 }
-}));
+// Rutas de autenticación y tareas
+app.use('/login', loginRoutes);
+app.use('/tasks', verifyToken, taskRoutes); // Rutas de tareas protegidas
 
-// Servir archivos estáticos desde el directorio 'public'
-app.use(express.static(path.join(__dirname, '../public')));
-
-// Usar las rutas definidas en 'routes.js'
-app.use('/', routes);
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// Inicio del servidor
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
