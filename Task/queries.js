@@ -1,41 +1,36 @@
-//queries.js
-// Importar la función getConnection desde el archivo de base de datos
 const { getConnection } = require('./db');
-const sql = require('mssql'); // Importar el módulo mssql para manejar consultas SQL
+const sql = require('mssql');
 
-// Función para obtener todos los tasks
-const getTasks = async (request, response) => {
+// Obtener todas las tareas
+const getTasks = async (req, res) => {
     try {
-        const pool = await getConnection(); // Establecer conexión con la base de datos
-        const result = await pool.request().query('SELECT * FROM tasks ORDER BY id ASC'); // Ejecutar la consulta para obtener todos los tasks
-        response.status(200).json(result.recordset); // Enviar el conjunto de resultados como respuesta en formato JSON
+        const pool = await getConnection();
+        const result = await pool.request().query('SELECT * FROM tasks ORDER BY id ASC');
+        res.status(200).json(result.recordset);
     } catch (error) {
-        console.error('Error al obtener tasks:', error); // Registrar el error en la consola
-        response.status(500).send('Error al obtener tasks'); // Enviar un mensaje de error al cliente
+        console.error('Error al obtener tasks:', error);
+        res.status(500).send('Error al obtener tasks');
     }
 };
 
-// Función para obtener un task por ID
-const getTaskById = async (request, response) => {
-    const id = parseInt(request.params.id); // Obtener el ID de los parámetros de la solicitud y convertirlo a entero
+// Obtener tarea por ID
+const getTaskById = async (req, res) => {
+    const id = parseInt(req.params.id);
     try {
-        const pool = await getConnection(); // Establecer conexión con la base de datos
-        const result = await pool.request()
-            .input('id', sql.Int, id) // Definir el parámetro de entrada 'id'
-            .query('SELECT * FROM tasks WHERE id = @id'); // Ejecutar la consulta para obtener el task con el ID especificado
-        response.status(200).json(result.recordset[0]); // Enviar el task encontrado como respuesta en formato JSON
+        const pool = await getConnection();
+        const result = await pool.request().input('id', sql.Int, id).query('SELECT * FROM tasks WHERE id = @id');
+        res.status(200).json(result.recordset[0]);
     } catch (error) {
-        console.error('Error al obtener task:', error); // Registrar el error en la consola
-        response.status(500).send('Error al obtener task'); // Enviar un mensaje de error al cliente
+        console.error('Error al obtener task:', error);
+        res.status(500).send('Error al obtener task');
     }
 };
 
-// Función para crear un nuevo task
-const createTask = async (request, response) => {
-    // Extraer los campos del body de la solicitud
-    const { title, desc_s, desc_l, priority, owner, dept, customer, requester, area, url, attachment, status } = request.body;
+// Crear una nueva tarea
+const createTask = async (req, res) => {
+    const { title, desc_s, desc_l, priority, owner, dept, customer, requester, area, url, attachment, status } = req.body;
     try {
-        const pool = await getConnection(); // Establecer conexión con la base de datos
+        const pool = await getConnection();
         const result = await pool.request()
             .input('title', sql.VarChar, title)
             .input('desc_s', sql.Text, desc_s)
@@ -53,21 +48,20 @@ const createTask = async (request, response) => {
                 INSERT INTO tasks (title, desc_s, desc_l, priority, owner, dept, customer, requester, area, url, attachment, status, cdt, udt) 
                 VALUES (@title, @desc_s, @desc_l, @priority, @owner, @dept, @customer, @requester, @area, @url, @attachment, @status, GETDATE(), GETDATE());
                 SELECT SCOPE_IDENTITY() AS id
-            `); // Ejecutar la consulta de inserción y obtener el ID generado
-        response.status(201).json({ id: result.recordset[0].id }); // Enviar el ID del nuevo task como respuesta
+            `);
+        res.status(201).json({ id: result.recordset[0].id });
     } catch (error) {
-        console.error('Error al crear task:', error); // Registrar el error en la consola
-        response.status(500).send('Error al crear task'); // Enviar un mensaje de error al cliente
+        console.error('Error al crear task:', error);
+        res.status(500).send('Error al crear task');
     }
 };
 
-// Función para actualizar un task existente
-const updateTask = async (request, response) => {
-    const id = parseInt(request.params.id); // Obtener el ID de los parámetros de la solicitud y convertirlo a entero
-    // Extraer los campos del body de la solicitud
-    const { title, desc_s, desc_l, priority, owner, dept, customer, requester, area, url, attachment, status } = request.body;
+// Actualizar tarea existente
+const updateTask = async (req, res) => {
+    const id = parseInt(req.params.id);
+    const { title, desc_s, desc_l, priority, owner, dept, customer, requester, area, url, attachment, status } = req.body;
     try {
-        const pool = await getConnection(); // Establecer conexión con la base de datos
+        const pool = await getConnection();
         await pool.request()
             .input('id', sql.Int, id)
             .input('title', sql.VarChar, title)
@@ -86,51 +80,51 @@ const updateTask = async (request, response) => {
                 UPDATE tasks 
                 SET title = @title, desc_s = @desc_s, desc_l = @desc_l, priority = @priority, owner = @owner, dept = @dept, customer = @customer, requester = @requester, area = @area, url = @url, attachment = @attachment, status = @status, udt = GETDATE() 
                 WHERE id = @id
-            `); // Ejecutar la consulta de actualización
-        response.status(200).send(`Task updated with ID: ${id}`); // Enviar un mensaje de éxito al cliente
+            `);
+        res.status(200).send(`Task updated with ID: ${id}`);
     } catch (error) {
-        console.error('Error al actualizar task:', error); // Registrar el error en la consola
-        response.status(500).send('Error al actualizar task'); // Enviar un mensaje de error al cliente
+        console.error('Error al actualizar task:', error);
+        res.status(500).send('Error al actualizar task');
     }
 };
 
-// Función para eliminar un task
-const deleteTask = async (request, response) => {
-    const id = parseInt(request.params.id); // Obtener el ID de los parámetros de la solicitud y convertirlo a entero
-    try {
-        const pool = await getConnection(); // Establecer conexión con la base de datos
-      await pool.request()
-        .input('id', sql.Int, id)
-      .query('DELETE FROM tasks WHERE id = @id'); // Ejecutar la consulta para eliminar el task con el ID especificado
-      response.status(200).send(`Task deleted with ID: ${id}`); // Enviar un mensaje de éxito al cliente
-    } catch (error) {
-     console.error('Error al eliminar task:', error); // Registrar el error en la consola
-        //response.status(500).send('Error al eliminar task'); // Enviar un mensaje de error al cliente
-    }
-};
-
-// Función para marcar un task como completado
-const markTaskAsCompleted = async (taskId) => {
+// Eliminar tarea
+const deleteTask = async (req, res) => {
+    const id = parseInt(req.params.id);
     try {
         const pool = await getConnection();
-        await pool.request()
-            .input('taskId', sql.Int, taskId)
-            .query('UPDATE tasks SET completed_at = GETDATE() WHERE id = @taskId');
-        console.log(`Task ${taskId} marcada como completada.`);
+        await pool.request().input('id', sql.Int, id).query('DELETE FROM tasks WHERE id = @id');
+        res.status(200).send(`Task deleted with ID: ${id}`);
     } catch (error) {
-        console.error('Error al marcar task como completada:', error);
+        console.error('Error al eliminar task:', error);
+        res.status(500).send('Error al eliminar task');
     }
 };
 
-// Función para archivar tasks completadas
+// Marcar tarea como completada
+const markTaskAsCompleted = async (req, res) => {
+    const taskId = parseInt(req.params.id);
+    if (isNaN(taskId)) return res.status(400).send('Invalid task ID');
+    try {
+        const pool = await getConnection();
+        await pool.request().input('taskId', sql.Int, taskId).query(`
+            UPDATE tasks 
+            SET status = 'completado', completed_at = GETDATE() 
+            WHERE id = @taskId
+        `);
+        res.status(200).send(`Task ${taskId} marcada como completada.`);
+    } catch (error) {
+        console.error('Error al marcar task como completada:', error);
+        res.status(500).send('Error al marcar task como completada');
+    }
+};
+
+// Archivar tareas completadas
 const archiveCompletedTasks = async () => {
     try {
         const pool = await getConnection();
-        // Mover las tasks completadas a la tabla de archivo
         await pool.request().query(`
-            INSERT INTO tasks_archive
-            SELECT * FROM tasks WHERE completed_at IS NOT NULL;
-
+            INSERT INTO tasks_archive SELECT * FROM tasks WHERE completed_at IS NOT NULL;
             DELETE FROM tasks WHERE completed_at IS NOT NULL;
         `);
         console.log('Tareas completadas archivadas con éxito.');
@@ -139,8 +133,7 @@ const archiveCompletedTasks = async () => {
     }
 };
 
-
-// Exportar las funciones para que estén disponibles en otros módulos
+// Exportar todas las funciones
 module.exports = {
     getTasks,
     getTaskById,
