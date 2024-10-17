@@ -10,12 +10,15 @@ body {
     align-items: center; /* Centra los elementos horizontalmente */
     font-family: 'Arial', sans-serif; /* Define la fuente para el texto */
     color: #fff; /* Establece el color de texto blanco por defecto */
+    font-family: Arial, sans-serif;
+
 }
 
 /* Estilo para el encabezado */
 header {
     margin-top: 20px; /* Añade margen superior al encabezado */
     text-align: center; /* Centra el texto del encabezado */
+    
 }
 
 header h1 {
@@ -183,4 +186,28 @@ table td button:active {
     padding: 10px;
     border: 1px solid #000;
     text-align: center;
+}
+nav {
+    margin-top: 20px; /* Espacio superior para el menú */
+}
+
+nav ul {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    padding: 0; /* Elimina el padding */
+    display: flex; /* Utiliza flexbox para alinear horizontalmente */
+    justify-content: center; /* Centra el menú */
+}
+
+nav ul li {
+    margin: 0 15px; /* Espaciado entre los elementos del menú */
+}
+
+nav ul li a {
+    color: #ff0000c7; /* Color del texto del menú */
+    text-decoration: none; /* Elimina el subrayado */
+    font-size: 18px; /* Tamaño de fuente */
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Subrayar al pasar el mouse */
 }
