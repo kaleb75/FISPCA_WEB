@@ -17,76 +17,88 @@
     <!-- Page header with company logo and title -->
     <header>
         <center>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Inventec.png" alt="Inventec Logo" width="250px">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Inventec.png" 
+                 alt="Inventec Logo" width="250px">
         </center>
-        <h1>OT Task Management</h1>
+        <h1>OT TASKS | OT 任务管理</h1>
+        <nav>
+            <ul>
+                <li><a href="#todos-mis-pendientes">Todos mis pendientes</a></li>
+                <li><a href="#todos-los-pendientes">Todos los pendientes</a></li>
+                <li><a href="#todos-mis-completados">Todos mis completados</a></li>
+                <li><a href="#ideas">Ideas</a></li>
+                <!-- Agrega más elementos de menú aquí -->
+            </ul>
+        </nav>
     </header>
     
-    <!-- Form for creating or editing tasks -->
+    <!-- Formulario para crear o editar tareas -->
     <form id="taskForm">
-        <!-- Hidden input to store the task ID -->
+        <!-- Campo oculto para almacenar el ID de la tarea -->
         <input type="hidden" id="taskId">
-        
-        <!-- Row for title and description inputs -->
+    
+        <!-- Fila para título y descripción corta -->
         <div class="form-row">
-            <input type="text" id="taskTitle" placeholder="Title" class="x3y1" required>
-            <input type="text" id="taskDescS" placeholder="Short Description" class="x5y1" required>
+            <input type="text" id="taskTitle" placeholder="Title | 标题" class="x3y1" required>
+            <input type="text" id="taskDescS" placeholder="Short descripción | 简短描述" class="x5y1" required>
         </div>
+    
+        <!-- Fila para descripción larga -->
         <div class="form-row">
-            <input type="text" id="taskDescL" placeholder="Long Description" class="x3y3" required>
+            <input type="text" id="taskDescL" placeholder="Description | 长描述" class="x3y3" required>
         </div>
-        
-        <!-- Row for priority, owner, and department inputs -->
+    
+        <!-- Fila para prioridad, estado, propietario y departamento -->
         <div class="form-row">
-            <input type="number" id="taskPriority" placeholder="Priority" class="x1y1" required>
-            <input type="text" id="taskStatus" placeholder="Status" class="x2y1" required>
-            <input type="text" id="taskOwner" placeholder="Owner" class="x2y1" required>
-            <input type="text" id="taskDept" placeholder="Department" class="x3y1" required>
+            <input type="number" id="taskPriority" placeholder="Priority | 优先级" class="x1y1" required>
+            <input type="text" id="taskStatus" placeholder="Status | 状态" class="x2y1" required>
+            <input type="text" id="taskOwner" placeholder="Owner | 所有者" class="x2y1" required>
+            <input type="text" id="taskDept" placeholder="Department | 部门" class="x3y1" required>
         </div>
-        
-        <!-- Row for customer, requester, and area inputs -->
+    
+        <!-- Fila para cliente, solicitante y área -->
         <div class="form-row">
-            <input type="text" id="taskCustomer" placeholder="Customer" class="x3y1" required>
-            <input type="text" id="taskRequester" placeholder="Requester" class="x3y1" required>
-            <input type="text" id="taskArea" placeholder="Area" class="x3y1" required>
+            <input type="text" id="taskCustomer" placeholder="Customer | 客户" class="x3y1" required>
+            <input type="text" id="taskRequester" placeholder="Requester | 申请人" class="x3y1" required>
+            <input type="text" id="taskArea" placeholder="Area | 区域" class="x3y1" required>
         </div>
-        
-        <!-- Row for URL, attachment, and status inputs -->
+    
+        <!-- Fila para URL y adjunto -->
         <div class="form-row">
-            <input type="url" id="taskURL" placeholder="URL" class="x5y1">
-            <input type="text" id="taskAttachment" placeholder="Attachment" class="x3y1">
-            
+            <input type="url" id="taskURL" placeholder="URL | 链接" class="x5y1">
+            <input type="text" id="taskAttachment" placeholder="Attachment | 附件" class="x3y1">
         </div>
-        
-        <!-- Submit button to save the task -->
-        <button type="submit">Save</button>
+    
+        <!-- Botón para guardar la tarea -->
+        <button type="submit">Guardar | 保存</button>
     </form>
     
-    <!-- Section to display the list of tasks -->
-    <h2>Tasks</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th class="tg-0pky">ID</th>
-                <th class="tg-0pky">Title</th>
-                <th class="tg-0pky">Short Description</th>
-                <th class="tg-0pky">Long Description</th>
-                <th class="tg-0pky">Priority</th>
-                <th class="tg-0pky">Owner</th>
-                <th class="tg-0pky">Department</th>
-                <th class="tg-0pky">Customer</th>
-                <th class="tg-0pky">Requester</th>
-                <th class="tg-0pky">Area</th>
-                <th class="tg-0pky">URL</th>
-                <th class="tg-0pky">Attachment</th>
-                <th class="tg-0pky">Status</th>
-                <th class="tg-0pky">Actions</th>
-            </tr>
-        </thead>
-        <tbody id="taskList">
-            <!-- Aquí se insertarán las filas de las tareas -->
-        </tbody>
-    </table>
+   <!-- Sección para mostrar la lista de tareas -->
+<h2>Task | 任务</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th class="tg-0pky">ID | ID</th>
+            <th class="tg-0pky">Title | 标题</th>
+            <th class="tg-0pky">Short Description | 简短描述</th>
+            <th class="tg-0pky">Description | 长描述</th>
+            <th class="tg-0pky">Priority | 优先级</th>
+            <th class="tg-0pky">Owner | 所有者</th>
+            <th class="tg-0pky">Department | 部门</th>
+            <th class="tg-0pky">Customer | 客户</th>
+            <th class="tg-0pky">Requester | 申请人</th>
+            <th class="tg-0pky">Área | 区域</th>
+            <th class="tg-0pky">URL | 链接</th>
+            <th class="tg-0pky">Attachment | 附件</th>
+            <th class="tg-0pky">Status | 状态</th>
+            <th class="tg-0pky">Actions | 操作</th>
+        </tr>
+    </thead>
+    <tbody id="taskList">
+        <!-- Aquí se insertarán las filas de las tareas -->
+    </tbody>
+</table>
+
     
 </body>
 </html>
