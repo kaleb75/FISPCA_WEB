@@ -1,3 +1,4 @@
+//queries.js
 const { getConnection } = require('./db');
 const sql = require('mssql');
 
@@ -5,7 +6,7 @@ const sql = require('mssql');
 const getTasks = async (req, res) => {
     try {
         const pool = await getConnection();
-        const result = await pool.request().query('SELECT * FROM tasks ORDER BY id ASC');
+        const result = await pool.request().query("SELECT * FROM tasks WHERE status <> 'DONE' ORDER BY priority ASC");
         res.status(200).json(result.recordset);
     } catch (error) {
         console.error('Error al obtener tasks:', error);
@@ -109,7 +110,7 @@ const markTaskAsCompleted = async (req, res) => {
         const pool = await getConnection();
         await pool.request().input('taskId', sql.Int, taskId).query(`
             UPDATE tasks 
-            SET status = 'completado', completed_at = GETDATE() 
+            SET status = 'DONE', completed_at = GETDATE() 
             WHERE id = @taskId
         `);
         res.status(200).send(`Task ${taskId} marcada como completada.`);

@@ -1,8 +1,10 @@
+//server.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const path = require('path');
 const db = require('./queries'); // Asegúrate de que este archivo tenga las funciones necesarias
 const app = express();
 const port = 12345;
@@ -40,6 +42,14 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((username, done) => {
     // Aquí deberías buscar el usuario en tu base de datos
     done(null, { username: username });
+});
+
+// Servir archivos estáticos desde la carpeta frontend
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Ruta para la raíz
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
 // Rutas para el CRUD de tasks

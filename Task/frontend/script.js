@@ -1,4 +1,3 @@
-//script.js
 // Obtener todas las tareas del servidor
 function fetchTasks() {
     $.get('/tasks', function(data) {
@@ -117,34 +116,7 @@ async function markTaskAsCompleted(taskId) {
     }
 }
 
-
 // Llama a fetchTasks cuando la página se haya cargado
 $(document).ready(function() {
     fetchTasks();
 });
-// Task/Public/script.js
-document.addEventListener('DOMContentLoaded', () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      window.location.href = '/'; // Redirigir al login si no hay token
-      return;
-    }
-  
-    fetch('/tasks', {
-      method: 'GET',
-      headers: { 'Authorization': token }
-    })
-      .then(response => response.json())
-      .then(tasks => {
-        const taskContainer = document.getElementById('taskContainer');
-        tasks.forEach(task => {
-          const taskElement = document.createElement('div');
-          taskElement.textContent = `${task.titulo}: ${task.descripcion}`;
-          taskContainer.appendChild(taskElement);
-        });
-      })
-      .catch(() => {
-        alert('Error al cargar las tareas');
-      });
-  });
-  
