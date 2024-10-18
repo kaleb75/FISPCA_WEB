@@ -6,7 +6,7 @@ const sql = require('mssql');
 const getTasks = async (req, res) => {
     try {
         const pool = await getConnection();
-        const result = await pool.request().query("SELECT * FROM tasks WHERE status <> 'DONE' ORDER BY priority ASC");
+        const result = await pool.request().query("SELECT * FROM tasks WHERE status <> 'DONE' ORDER BY priority, udt ASC");
         res.status(200).json(result.recordset);
     } catch (error) {
         console.error('Error al obtener tasks:', error);
