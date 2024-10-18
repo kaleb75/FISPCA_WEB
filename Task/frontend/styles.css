@@ -33,7 +33,7 @@ form {
     padding: 20px; /* Añade espacio interno al formulario */
     border-radius: 15px; /* Bordes redondeados del formulario */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Añade sombra al formulario */
-    max-width: 800px; /* Ancho máximo del formulario */
+    max-width: 70%; /* Ancho máximo del formulario */
     width: 100%; /* Ancho del formulario al 100% del contenedor */
     margin-bottom: 30px; /* Espacio inferior */
     display: flex; /* Utiliza Flexbox */
@@ -97,7 +97,7 @@ h2 {
 /* Tabla de ítems */
 table {
     width: 90%; /* Ocupa el 90% del ancho del contenedor */
-    max-width: 800px; /* Ancho máximo */
+    max-width: 110%; /* Ancho máximo */
     margin-bottom: 30px; /* Espacio inferior */
     border-collapse: collapse; /* Colapsa los bordes de las celdas */
     background-color: #4e1d1d; /* Fondo de la tabla */
